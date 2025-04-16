@@ -21,11 +21,6 @@ jobs:
     
     - name: Install uv
       uses: astral-sh/setup-uv@v5
-        
-    - name: Setup Python Version
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.11
 
     - name: Create an uv environment
       run: |
