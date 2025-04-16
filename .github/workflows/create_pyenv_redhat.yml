@@ -1,4 +1,4 @@
-name: publish_gui_redhat
+name: create_pyenv_redhat
 
 on:
   # Permit manual trigger
