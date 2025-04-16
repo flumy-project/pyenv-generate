@@ -26,7 +26,6 @@ jobs:
 
     - name: Create an uv environment
       run: |
-        which uv
         uv venv
         tar cjvf .venv pyenv_flumy_redhat.tar.gz
         
