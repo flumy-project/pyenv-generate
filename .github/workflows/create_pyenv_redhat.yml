@@ -28,7 +28,7 @@ jobs:
         uv pip install gstlearn
         uv pip install flumy
         ls -a
-        tar cjvf pyenv_flumy_redhat.tar.gz .venv
+        tar czvf pyenv_flumy_redhat.tar.gz .venv
         
     - uses: actions/upload-artifact@v4
       with:
