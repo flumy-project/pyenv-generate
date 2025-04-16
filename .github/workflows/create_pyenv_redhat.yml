@@ -8,7 +8,12 @@ on:
         description: 'Manual'
         required: false
         default: ''
-
+      dry_publish:
+        description: 'Dry publish (no upload)'
+        type: boolean
+        required: false
+        default: false
+        
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,4 +39,20 @@ jobs:
       with:
         name: redhat-archive
         path: pyenv_flumy_redhat.tar.gz
+
+  publish:
+    needs: build
+    if: ${{inputs.dry_publish == false}}
+
+    # Only ubuntu can upload via ssh
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: fabien-ors/files-publish-action@v5
+      with:
+        host: ${{ secrets.CG_HOST }}
+        username: ${{ secrets.CG_USR }}
+        password: ${{ secrets.CG_PWD }}
+        dest-path: "/var/www/html/flumy"
+        pattern: "redhat-archive"
 
